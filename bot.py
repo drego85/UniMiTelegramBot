@@ -16,21 +16,22 @@ def handle(msg):
 
     if content_type == "text" and chat_type == "private":
         bot.sendMessage(chat_id,
-                        "Bot privato dedicato alle chat di gruppo degli studenti di SSRI Online, creato da @AndreaDraghetti.")
+                        "*Bot privato* dedicato alle chat di gruppo degli studenti di SSRI Online, creato da @AndreaDraghetti.",
+                        parse_mode="Markdown")
         logging.info("%s: %s" % (content_type, msg["from"]["first_name"]))
 
     if content_type == "new_chat_member" and chat_id in Config.chatidList:
         if msg["from"]["username"]:
             bot.sendMessage(chat_id,
-                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. Cortesemente leggi il messaggio fissato prima di porre delle domande, contiene importanti informazioni per lo studente." %
-                            msg["from"]["username"])
+                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere il messaggio fissato in alto poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
+                            msg["from"]["username"], parse_mode="Markdown")
             logging.info("%s: %s" % (content_type, msg["from"]["username"]))
 
         else:
             bot.sendMessage(chat_id,
-                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. Cortesemente leggi il messaggio fissato prima di porre delle domande, contiene importanti informazioni per lo studente." %
+                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere il messaggio fissato in alto poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
                             msg["from"]["first_name"])
-            logging.info("%s: %s" % (content_type, msg["from"]["first_name"]))
+            logging.info("%s: %s" % (content_type, msg["from"]["first_name"]), parse_mode="Markdown")
 
 
 try:
@@ -40,5 +41,5 @@ except Exception as e:
     logging.error(e, exc_info=True)
     pass
 
-while 1:
+while True:
     time.sleep(10)
