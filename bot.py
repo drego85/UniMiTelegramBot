@@ -30,8 +30,8 @@ def handle(msg):
         else:
             bot.sendMessage(chat_id,
                             "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere il messaggio fissato in alto poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
-                            msg["from"]["first_name"])
-            logging.info("%s: %s" % (content_type, msg["from"]["first_name"]), parse_mode="Markdown")
+                            msg["from"]["first_name"], parse_mode="Markdown")
+            logging.info("%s: %s" % (content_type, msg["from"]["first_name"]))
 
 
 try:
