@@ -23,15 +23,15 @@ def handle(msg):
     if content_type == "new_chat_member" and chat_id in Config.chatidList:
         if msg["from"]["username"]:
             bot.sendMessage(chat_id,
-                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere [questo messaggio](https://t.me/canalessri/86) poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
-                            msg["from"]["username"], parse_mode="Markdown")
+                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere* [questo messaggio](https://t.me/canalessri/86) *poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
+                            msg["from"]["username"], parse_mode="Markdown", disable_web_page_preview=True)
             logging.info("%s: %s" % (content_type, msg["from"]["username"]))
 
         else:
             bot.sendMessage(chat_id,
-                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere [questo messaggio](https://t.me/canalessri/86) poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
+                            "Benvenuto @%s, ti ricordiamo che questo è il gruppo dedicato agli studenti ONLINE di SSRI. *Ti preghiamo di leggere* [questo messaggio](https://t.me/canalessri/86) *poichè contiene informazioni importanti e sfrutta la ricerca prima di fare delle domande*. Grazie 😉" %
                             msg["from"]["first_name"], parse_mode="Markdown")
-            logging.info("%s: %s" % (content_type, msg["from"]["first_name"]))
+            logging.info("%s: %s" % (content_type, msg["from"]["first_name"]), disable_web_page_preview=True)
 
 
 try:
